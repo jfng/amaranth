@@ -8,6 +8,7 @@ import warnings
 from ..hdl.ast import Shape, ShapeCastable, Const, Signal, Value, ValueCastable
 from ..hdl.ir import Elaboratable
 from .._utils import final
+from .annotation import Annotation
 
 
 __all__ = ["In", "Out", "Signature", "Interface", "connect", "flipped", "Component"]
@@ -352,6 +353,10 @@ class Signature(metaclass=SignatureMeta):
     @property
     def members(self):
         return self.__members
+
+    @property
+    def annotations(self):
+        return ()
 
     def __eq__(self, other):
         other_unflipped = other.flip() if type(other) is FlippedSignature else other
@@ -812,3 +817,124 @@ class Component(Elaboratable):
                 f"Component '{cls.__module__}.{cls.__qualname__}' does not have signature member "
                 f"annotations")
         return signature
+
+    @property
+    def metadata(self):
+        return ComponentMetadata(self)
+
+
+class ComponentMetadata(Annotation):
+    name   = "org.amaranth-lang.component"
+    schema = {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://amaranth-lang.org/schema/amaranth/0.4/component",
+        "type": "object",
+        "properties": {
+            "interface": {
+                "type": "object",
+                "patternProperties": {
+                    "^[A-Za-z0-9_]+$": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "enum": ["port"],
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                    },
+                                    "dir": {
+                                        "enum": ["in", "out"],
+                                    },
+                                    "width": {
+                                        "type": "integer",
+                                        "minimum": 0,
+                                    },
+                                    "reset": {
+                                        "type": "integer",
+                                    },
+                                },
+                                "additionalProperties": False,
+                                "required": [
+                                    "type",
+                                    "name",
+                                    "dir",
+                                    "width",
+                                ],
+                            },
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "enum": ["interface"],
+                                    },
+                                    "members": {
+                                        "$ref": "#/properties/interface",
+                                    },
+                                    "annotations": {
+                                        "type": "object",
+                                    },
+                                },
+                                "additionalProperties": False,
+                                "required": [
+                                    "type",
+                                    "members",
+                                    "annotations",
+                                ],
+                            },
+                        ],
+                    },
+                },
+                "additionalProperties": False,
+            },
+        },
+        "additionalProperties": False,
+        "required": [
+            "interface",
+        ]
+    }
+
+    def __init__(self, component):
+        if not isinstance(component, Component):
+            raise TypeError(f"Object must be a Component, not {component!r}")
+        self._component = component
+
+    @property
+    def component(self):
+        return self._component
+
+    def as_json(self):
+        def describe_member(member, *, path):
+            assert isinstance(member, Member)
+            if member.is_port:
+                return {
+                    "type": "port",
+                    "name": "__".join(path),
+                    "dir": "in" if member.flow == In else "out",
+                    "width": Shape.cast(member.shape).width,
+                    "reset": Const.cast(member.reset or 0).value,
+                }
+            elif member.is_signature:
+                return {
+                    "type": "interface",
+                    "members": {
+                        name: describe_member(sub_member, path=(*path, name))
+                        for name, sub_member in member.signature.members.items()
+                    },
+                    "annotations": {
+                        annotation.name: annotation.as_json()
+                        for annotation in member.signature.annotations
+                    },
+                }
+            else:
+                assert False # :nocov:
+
+        instance = {
+            "interface": {
+                name: describe_member(member, path=(name,))
+                for name, member in self.component.signature.members.items()
+            },
+        }
+        self.validate(instance)
+        return instance
