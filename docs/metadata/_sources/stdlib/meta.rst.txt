@@ -61,7 +61,8 @@ metadata:
                     'dir': 'in',
                     'width': 32,
                     'signed': False,
-                    'reset': '0'
+                    'init': '0',
+                    'dimensions': []
                 },
                 'b': {
                     'type': 'port',
@@ -69,7 +70,8 @@ metadata:
                     'dir': 'in',
                     'width': 32,
                     'signed': False,
-                    'reset': '0'
+                    'init': '0',
+                    'dimensions': []
                 },
                 'o': {
                     'type': 'port',
@@ -77,7 +79,8 @@ metadata:
                     'dir': 'out',
                     'width': 33,
                     'signed': False,
-                    'reset': '0'
+                    'init': '0',
+                    'dimensions': []
                 }
             },
             'annotations': {}
@@ -85,10 +88,10 @@ metadata:
     }
 
 .. testcode::
-    :hidden:
+    :hide:
 
     # The way doctest requires this object to be formatted is truly hideous, even with +NORMALIZE_WHITESPACE.
-    assert adder.metadata.as_json() == {'interface': {'members': {'a': {'type': 'port', 'name': 'a', 'dir': 'in', 'width': 32, 'signed': False, 'reset': '0'}, 'b': {'type': 'port', 'name': 'b', 'dir': 'in', 'width': 32, 'signed': False, 'reset': '0'}, 'o': {'type': 'port', 'name': 'o', 'dir': 'out', 'width': 33, 'signed': False, 'reset': '0'}}, 'annotations': {}}}
+    assert adder.metadata.as_json() == {'interface': {'members': {'a': {'type': 'port', 'name': 'a', 'dir': 'in', 'width': 32, 'signed': False, 'init': '0', 'dimensions': []}, 'b': {'type': 'port', 'name': 'b', 'dir': 'in', 'width': 32, 'signed': False, 'init': '0', 'dimensions': []}, 'o': {'type': 'port', 'name': 'o', 'dir': 'out', 'width': 33, 'signed': False, 'init': '0', 'dimensions': []}}, 'annotations': {}}}
 
 
 All metadata in Amaranth must adhere to a schema in the `JSON Schema`_ language, which is integral
