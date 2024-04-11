@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Interfaces and connections &mdash; Amaranth language &amp; toolchain 0.5.0.dev214 documentation</title>
+  <title>Interfaces and connections &mdash; Amaranth language &amp; toolchain 0.5.0.dev217 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/platformpicker.css" />
@@ -17,14 +17,14 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=5a86d1ae"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=6d7e5bc4"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../_static/platformpicker.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Memory arrays" href="memory.html" />
+    <link rel="next" title="Interface metadata" href="meta.html" />
     <link rel="prev" title="Data structures" href="data.html" /> 
 </head>
 
@@ -41,7 +41,7 @@
               <img src="../_static/logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.5.0.dev214+g861a412
+                0.5.0.dev217+g0fd8e10
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -70,8 +70,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#components">Components</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="meta.html">Interface metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="memory.html">Memory arrays</a></li>
-<li class="toctree-l3"><a class="reference internal" href="meta.html">Metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cdc.html">Clock domain crossing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="coding.html">Code conversion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fifo.html">First-in first-out queues</a></li>
@@ -1049,19 +1049,6 @@ of how this proxy object works.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="amaranth.lib.wiring.Signature.annotations">
-<span class="sig-name descname"><span class="pre">annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amaranth.lib.wiring.Signature.annotations" title="Permalink to this definition"></a></dt>
-<dd><p>Get annotations of an interface object.</p>
-<p>Subclasses of <a class="reference internal" href="#amaranth.lib.wiring.Signature" title="amaranth.lib.wiring.Signature"><code class="xref py py-class docutils literal notranslate"><span class="pre">Signature</span></code></a> may override this method to return annotations attached
-to an interface object compatible with this signature.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>iterable of <code class="xref py py-class docutils literal notranslate"><span class="pre">Annotation</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="amaranth.lib.wiring.Signature.__eq__">
 <span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amaranth.lib.wiring.Signature.__eq__" title="Permalink to this definition"></a></dt>
 <dd><p>Compare this signature with another.</p>
@@ -1197,6 +1184,23 @@ have informative names and accurate source location information.</p>
 the two listed above. Such arguments must have a default value, because
 the <a class="reference internal" href="#amaranth.lib.wiring.SignatureMembers.create" title="amaranth.lib.wiring.SignatureMembers.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SignatureMembers.create()</span></code></a> method will call the <a class="reference internal" href="#amaranth.lib.wiring.Signature.create" title="amaranth.lib.wiring.Signature.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Signature.create()</span></code></a> member
 without these additional arguments when this signature is a member of another signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="amaranth.lib.wiring.Signature.annotations">
+<span class="sig-name descname"><span class="pre">annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amaranth.lib.wiring.Signature.annotations" title="Permalink to this definition"></a></dt>
+<dd><p>Annotate an interface object.</p>
+<p>Subclasses of <a class="reference internal" href="#amaranth.lib.wiring.Signature" title="amaranth.lib.wiring.Signature"><code class="xref py py-class docutils literal notranslate"><span class="pre">Signature</span></code></a> may override this method to provide annotations for
+a corresponding interface object. The default implementation provides none.</p>
+<p>See <a class="reference internal" href="meta.html#module-amaranth.lib.meta" title="amaranth.lib.meta"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amaranth.lib.meta</span></code></a> for details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="code highlight py python docutils literal highlight-python"><span class="nb">tuple</span><span class="p">()</span></code></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>iterable of <a class="reference internal" href="meta.html#amaranth.lib.meta.Annotation" title="amaranth.lib.meta.Annotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annotation</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1407,7 +1411,7 @@ on the flipped interface object from being called on the unflipped one, use
 <dd class="field-odd"><p><code class="code highlight py python docutils literal highlight-python"><span class="n">unflipped</span><span class="o">.</span><span class="n">signature</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span></code></p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#amaranth.lib.wiring.Signature" title="amaranth.lib.wiring.Signature">Signature</a></p>
+<dd class="field-even"><p><a class="reference internal" href="#amaranth.lib.wiring.Signature" title="amaranth.lib.wiring.Signature"><code class="xref py py-class docutils literal notranslate"><span class="pre">Signature</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1422,7 +1426,7 @@ on the flipped interface object from being called on the unflipped one, use
 <code class="code highlight py python docutils literal highlight-python"><span class="n">unflipped</span> <span class="o">==</span> <span class="n">other_unflipped</span></code>, <code class="code highlight py python docutils literal highlight-python"><span class="kc">False</span></code> otherwise.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1600,7 +1604,7 @@ can be used to customize a component’s signature.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="data.html" class="btn btn-neutral float-left" title="Data structures" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="memory.html" class="btn btn-neutral float-right" title="Memory arrays" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="meta.html" class="btn btn-neutral float-right" title="Interface metadata" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
