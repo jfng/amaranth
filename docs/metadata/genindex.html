@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; Amaranth language &amp; toolchain 0.5.0.dev287 documentation</title>
+  <title>Index &mdash; Amaranth language &amp; toolchain 0.5.0.dev278 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/platformpicker.css" />
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=992d0522"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=04b51fdf"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="_static/platformpicker.js"></script>
@@ -38,7 +38,7 @@
               <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.5.0.dev287
+                0.5.0.dev278
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -400,7 +400,11 @@
       <li><a href="stdlib/data.html#amaranth.lib.data.Const.as_bits">as_bits() (amaranth.lib.data.Const method)</a>
 </li>
       <li><a href="stdlib/meta.html#amaranth.lib.meta.Annotation.as_json">as_json() (amaranth.lib.meta.Annotation method)</a>
+
+      <ul>
+        <li><a href="stdlib/wiring.html#amaranth.lib.wiring.ComponentMetadata.as_json">(amaranth.lib.wiring.ComponentMetadata method)</a>
 </li>
+      </ul></li>
       <li><a href="reference.html#amaranth.hdl.ShapeCastable.as_shape">as_shape() (amaranth.hdl.ShapeCastable method)</a>
 
       <ul>
@@ -456,6 +460,8 @@
 </li>
       </ul></li>
       <li><a href="stdlib/wiring.html#amaranth.lib.wiring.Component">Component (class in amaranth.lib.wiring)</a>
+</li>
+      <li><a href="stdlib/wiring.html#amaranth.lib.wiring.ComponentMetadata">ComponentMetadata (class in amaranth.lib.wiring)</a>
 </li>
       <li><a href="stdlib/crc.html#amaranth.lib.crc.Parameters.compute">compute() (amaranth.lib.crc.Parameters method)</a>
 </li>
@@ -621,10 +627,10 @@
 </li>
       <li><a href="stdlib/crc/catalog.html#amaranth.lib.crc.catalog.CRC24_BLE">CRC24_BLE (in module amaranth.lib.crc.catalog)</a>
 </li>
-      <li><a href="stdlib/crc/catalog.html#amaranth.lib.crc.catalog.CRC24_FLEXRAY_A">CRC24_FLEXRAY_A (in module amaranth.lib.crc.catalog)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="stdlib/crc/catalog.html#amaranth.lib.crc.catalog.CRC24_FLEXRAY_A">CRC24_FLEXRAY_A (in module amaranth.lib.crc.catalog)</a>
+</li>
       <li><a href="stdlib/crc/catalog.html#amaranth.lib.crc.catalog.CRC24_FLEXRAY_B">CRC24_FLEXRAY_B (in module amaranth.lib.crc.catalog)</a>
 </li>
       <li><a href="stdlib/crc/catalog.html#amaranth.lib.crc.catalog.CRC24_INTERLAKEN">CRC24_INTERLAKEN (in module amaranth.lib.crc.catalog)</a>
@@ -943,6 +949,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="stdlib/meta.html#amaranth.lib.meta.InvalidAnnotation">InvalidAnnotation</a>
 </li>
+      <li><a href="stdlib/wiring.html#amaranth.lib.wiring.InvalidMetadata">InvalidMetadata</a>
+</li>
       <li><a href="stdlib/meta.html#amaranth.lib.meta.InvalidSchema">InvalidSchema</a>
 </li>
       <li><a href="stdlib/wiring.html#amaranth.lib.wiring.Signature.is_compliant">is_compliant() (amaranth.lib.wiring.Signature method)</a>
@@ -981,6 +989,8 @@
 </li>
       <li><a href="stdlib/memory.html#amaranth.hdl.MemoryData.Init">MemoryData.Init (class in amaranth.hdl)</a>
 </li>
+      <li><a href="stdlib/wiring.html#amaranth.lib.wiring.Component.metadata">metadata (amaranth.lib.wiring.Component property)</a>
+</li>
       <li>
     module
 
@@ -1015,7 +1025,11 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="stdlib/meta.html#amaranth.lib.meta.Annotation.origin">origin (amaranth.lib.meta.Annotation property)</a>
+
+      <ul>
+        <li><a href="stdlib/wiring.html#amaranth.lib.wiring.ComponentMetadata.origin">(amaranth.lib.wiring.ComponentMetadata property)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="stdlib/wiring.html#amaranth.lib.wiring.Flow.Out">Out (amaranth.lib.wiring.Flow attribute)</a>
@@ -1085,7 +1099,11 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="stdlib/meta.html#amaranth.lib.meta.Annotation.schema">schema (amaranth.lib.meta.Annotation attribute)</a>
+
+      <ul>
+        <li><a href="stdlib/wiring.html#amaranth.lib.wiring.ComponentMetadata.schema">(amaranth.lib.wiring.ComponentMetadata attribute)</a>
 </li>
+      </ul></li>
       <li><a href="stdlib/wiring.html#amaranth.lib.wiring.Member.shape">shape (amaranth.lib.wiring.Member property)</a>
 </li>
       <li><a href="reference.html#amaranth.hdl.Shape">Shape (class in amaranth.hdl)</a>
@@ -1171,7 +1189,11 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="stdlib/meta.html#amaranth.lib.meta.Annotation.validate">validate() (amaranth.lib.meta.Annotation class method)</a>
+
+      <ul>
+        <li><a href="stdlib/wiring.html#amaranth.lib.wiring.ComponentMetadata.validate">(amaranth.lib.wiring.ComponentMetadata class method)</a>
 </li>
+      </ul></li>
       <li><a href="reference.html#amaranth.hdl.Value">Value (class in amaranth.hdl)</a>
 </li>
   </ul></td>

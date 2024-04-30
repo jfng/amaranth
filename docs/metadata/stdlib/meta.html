@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Interface metadata &mdash; Amaranth language &amp; toolchain 0.5.0.dev287 documentation</title>
+  <title>Interface metadata &mdash; Amaranth language &amp; toolchain 0.5.0.dev278 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/platformpicker.css" />
@@ -17,7 +17,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=992d0522"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=04b51fdf"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../_static/platformpicker.js"></script>
@@ -41,7 +41,7 @@
               <img src="../_static/logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.5.0.dev287
+                0.5.0.dev278
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -144,8 +144,7 @@
 <span class="go">                &#39;dir&#39;: &#39;in&#39;,</span>
 <span class="go">                &#39;width&#39;: 32,</span>
 <span class="go">                &#39;signed&#39;: False,</span>
-<span class="go">                &#39;init&#39;: &#39;0&#39;,</span>
-<span class="go">                &#39;dimensions&#39;: []</span>
+<span class="go">                &#39;init&#39;: &#39;0&#39;</span>
 <span class="go">            },</span>
 <span class="go">            &#39;b&#39;: {</span>
 <span class="go">                &#39;type&#39;: &#39;port&#39;,</span>
@@ -153,8 +152,7 @@
 <span class="go">                &#39;dir&#39;: &#39;in&#39;,</span>
 <span class="go">                &#39;width&#39;: 32,</span>
 <span class="go">                &#39;signed&#39;: False,</span>
-<span class="go">                &#39;init&#39;: &#39;0&#39;,</span>
-<span class="go">                &#39;dimensions&#39;: []</span>
+<span class="go">                &#39;init&#39;: &#39;0&#39;</span>
 <span class="go">            },</span>
 <span class="go">            &#39;o&#39;: {</span>
 <span class="go">                &#39;type&#39;: &#39;port&#39;,</span>
@@ -162,8 +160,7 @@
 <span class="go">                &#39;dir&#39;: &#39;out&#39;,</span>
 <span class="go">                &#39;width&#39;: 33,</span>
 <span class="go">                &#39;signed&#39;: False,</span>
-<span class="go">                &#39;init&#39;: &#39;0&#39;,</span>
-<span class="go">                &#39;dimensions&#39;: []</span>
+<span class="go">                &#39;init&#39;: &#39;0&#39;</span>
 <span class="go">            }</span>
 <span class="go">        },</span>
 <span class="go">        &#39;annotations&#39;: {}</span>
@@ -209,8 +206,6 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_origin</span>
 
     <span class="k">def</span> <span class="nf">as_json</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">registers</span><span class="p">)</span>
         <span class="n">instance</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;registers&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">registers</span><span class="p">,</span>
         <span class="p">}</span>
@@ -251,26 +246,69 @@
 </pre></div>
 </div>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">peripheral</span> <span class="o">=</span> <span class="n">MyPeripheral</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">peripheral</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">as_json</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">peripheral</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">as_json</span><span class="p">()</span> 
 <span class="go">{</span>
 <span class="go">    &#39;interface&#39;: {</span>
-<span class="go">        &#39;members&#39;: { ... },</span>
-<span class="go">        &#39;annotations&#39;: {</span>
-<span class="go">            &#39;https://amaranth-lang.org/schema/example/0/csr-layout.json&#39;: {</span>
-<span class="go">                &#39;registers&#39;: {</span>
-<span class="go">                    &#39;control&#39;: 0,</span>
-<span class="go">                    &#39;status&#39;:  4,</span>
-<span class="go">                    &#39;data&#39;:    8</span>
+<span class="go">        &#39;members&#39;: {</span>
+<span class="go">            &#39;csr_bus&#39;: {</span>
+<span class="go">                &#39;type&#39;: &#39;interface&#39;,</span>
+<span class="go">                &#39;members&#39;: {</span>
+<span class="go">                    &#39;addr&#39;: {</span>
+<span class="go">                        &#39;type&#39;: &#39;port&#39;,</span>
+<span class="go">                        &#39;name&#39;: &#39;csr_bus__addr&#39;,</span>
+<span class="go">                        &#39;dir&#39;: &#39;in&#39;,</span>
+<span class="go">                        &#39;width&#39;: 16,</span>
+<span class="go">                        &#39;signed&#39;: False,</span>
+<span class="go">                        &#39;init&#39;: &#39;0&#39;</span>
+<span class="go">                    },</span>
+<span class="go">                    &#39;w_en&#39;: {</span>
+<span class="go">                        &#39;type&#39;: &#39;port&#39;,</span>
+<span class="go">                        &#39;name&#39;: &#39;csr_bus__w_en&#39;,</span>
+<span class="go">                        &#39;dir&#39;: &#39;in&#39;,</span>
+<span class="go">                        &#39;width&#39;: 1,</span>
+<span class="go">                        &#39;signed&#39;: False,</span>
+<span class="go">                        &#39;init&#39;: &#39;0&#39;</span>
+<span class="go">                    },</span>
+<span class="go">                    &#39;w_data&#39;: {</span>
+<span class="go">                        &#39;type&#39;: &#39;port&#39;,</span>
+<span class="go">                        &#39;name&#39;: &#39;csr_bus__w_data&#39;,</span>
+<span class="go">                        &#39;dir&#39;: &#39;in&#39;,</span>
+<span class="go">                        &#39;width&#39;: 32,</span>
+<span class="go">                        &#39;signed&#39;: False,</span>
+<span class="go">                        &#39;init&#39;: &#39;0&#39;</span>
+<span class="go">                    },</span>
+<span class="go">                    &#39;r_en&#39;: {</span>
+<span class="go">                        &#39;type&#39;: &#39;port&#39;,</span>
+<span class="go">                        &#39;name&#39;: &#39;csr_bus__r_en&#39;,</span>
+<span class="go">                        &#39;dir&#39;: &#39;in&#39;,</span>
+<span class="go">                        &#39;width&#39;: 1,</span>
+<span class="go">                        &#39;signed&#39;: False,</span>
+<span class="go">                        &#39;init&#39;: &#39;0&#39;</span>
+<span class="go">                    },</span>
+<span class="go">                    &#39;r_data&#39;: {</span>
+<span class="go">                        &#39;type&#39;: &#39;port&#39;,</span>
+<span class="go">                        &#39;name&#39;: &#39;csr_bus__r_data&#39;,</span>
+<span class="go">                        &#39;dir&#39;: &#39;out&#39;,</span>
+<span class="go">                        &#39;width&#39;: 32,</span>
+<span class="go">                        &#39;signed&#39;: False,</span>
+<span class="go">                        &#39;init&#39;: &#39;0&#39;</span>
+<span class="go">                    },</span>
+<span class="go">                },</span>
+<span class="go">                &#39;annotations&#39;: {</span>
+<span class="go">                    &#39;https://amaranth-lang.org/schema/example/0/csr-layout.json&#39;: {</span>
+<span class="go">                        &#39;registers&#39;: {</span>
+<span class="go">                            &#39;control&#39;: 0,</span>
+<span class="go">                            &#39;status&#39;:  4,</span>
+<span class="go">                            &#39;data&#39;:    8</span>
+<span class="go">                        }</span>
+<span class="go">                    }</span>
 <span class="go">                }</span>
 <span class="go">            }</span>
-<span class="go">        }</span>
+<span class="go">        },</span>
+<span class="go">        &#39;annotations&#39;: {}</span>
 <span class="go">    }</span>
 <span class="go">}</span>
 </pre></div>
-</div>
-<div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>Write this.</p>
 </div>
 </section>
 <section id="identifying-schemas">
@@ -324,7 +362,11 @@ the <a class="reference external" href="https://json-schema.org">JSON Schema</a>
 <dd><p>Defining a subclass of <a class="reference internal" href="#amaranth.lib.meta.Annotation" title="amaranth.lib.meta.Annotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annotation</span></code></a> causes its <a class="reference internal" href="#amaranth.lib.meta.Annotation.schema" title="amaranth.lib.meta.Annotation.schema"><code class="xref py py-data docutils literal notranslate"><span class="pre">schema</span></code></a> to be validated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#amaranth.lib.meta.InvalidSchema" title="amaranth.lib.meta.InvalidSchema"><strong>InvalidSchema</strong></a> – If <a class="reference internal" href="#amaranth.lib.meta.Annotation.schema" title="amaranth.lib.meta.Annotation.schema"><code class="xref py py-data docutils literal notranslate"><span class="pre">schema</span></code></a> doesn’t conform to the <cite>2020-12</cite> draft of <a class="reference external" href="https://json-schema.org">JSON Schema</a>.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="#amaranth.lib.meta.InvalidSchema" title="amaranth.lib.meta.InvalidSchema"><strong>InvalidSchema</strong></a> – If <a class="reference internal" href="#amaranth.lib.meta.Annotation.schema" title="amaranth.lib.meta.Annotation.schema"><code class="xref py py-data docutils literal notranslate"><span class="pre">schema</span></code></a> doesn’t conform to the <cite>2020-12</cite> draft of <a class="reference external" href="https://json-schema.org">JSON Schema</a>.</p></li>
+<li><p><a class="reference internal" href="#amaranth.lib.meta.InvalidSchema" title="amaranth.lib.meta.InvalidSchema"><strong>InvalidSchema</strong></a> – If <a class="reference internal" href="#amaranth.lib.meta.Annotation.schema" title="amaranth.lib.meta.Annotation.schema"><code class="xref py py-data docutils literal notranslate"><span class="pre">schema</span></code></a> doesn’t have a  <a class="reference external" href="https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01#name-the-id-keyword">“$id” keyword</a> at its root. This requirement is
+    specific to <a class="reference internal" href="#amaranth.lib.meta.Annotation" title="amaranth.lib.meta.Annotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annotation</span></code></a> schemas.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -376,7 +418,7 @@ validation by <a class="reference internal" href="#amaranth.lib.meta.Annotation.
 or retrieved from an external source.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#amaranth.lib.meta.InvalidAnnotation" title="amaranth.lib.meta.InvalidAnnotation"><strong>InvalidAnnotation</strong></a> – If <code class="code highlight py python docutils literal highlight-python"><span class="n">instance</span></code> doesn’t conform to <a class="reference internal" href="#amaranth.lib.meta.Annotation.schema" title="amaranth.lib.meta.Annotation.schema"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Annotation.schema</span></code></a>.</p>
+<dd class="field-even"><p><a class="reference internal" href="#amaranth.lib.meta.InvalidAnnotation" title="amaranth.lib.meta.InvalidAnnotation"><strong>InvalidAnnotation</strong></a> – If <code class="code highlight py python docutils literal highlight-python"><span class="n">instance</span></code> doesn’t conform to <a class="reference internal" href="#amaranth.lib.meta.Annotation.schema" title="amaranth.lib.meta.Annotation.schema"><code class="xref py py-attr docutils literal notranslate"><span class="pre">schema</span></code></a>.</p>
 </dd>
 </dl>
 </dd></dl>
