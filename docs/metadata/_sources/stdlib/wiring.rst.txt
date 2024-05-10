@@ -603,6 +603,10 @@ Components
 
 .. autoclass:: Component
 
+
+Component metadata
+==================
+
 .. autoexception:: InvalidMetadata
 
 .. autoclass:: ComponentMetadata

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Interface metadata &mdash; Amaranth language &amp; toolchain 0.5.0.dev278 documentation</title>
+  <title>Interface metadata &mdash; Amaranth language &amp; toolchain 0.5.0.dev290 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/platformpicker.css" />
@@ -17,7 +17,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=04b51fdf"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=366b45ab"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../_static/platformpicker.js"></script>
@@ -41,7 +41,7 @@
               <img src="../_static/logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.5.0.dev278
+                0.5.0.dev290
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -113,7 +113,7 @@
            <div itemprop="articleBody">
              
   <section id="module-amaranth.lib.meta">
-<span id="interface-metadata"></span><h1>Interface metadata<a class="headerlink" href="#module-amaranth.lib.meta" title="Permalink to this heading"></a></h1>
+<span id="interface-metadata"></span><span id="meta"></span><h1>Interface metadata<a class="headerlink" href="#module-amaranth.lib.meta" title="Permalink to this heading"></a></h1>
 <p>The <a class="reference internal" href="#module-amaranth.lib.meta" title="amaranth.lib.meta"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amaranth.lib.meta</span></code></a> module provides a way to annotate objects in an Amaranth design and exchange these annotations with external tools in a standardized format.</p>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
@@ -352,10 +352,10 @@ an annotation does not conform to its schema.</p>
 <dt class="sig sig-object py" id="amaranth.lib.meta.Annotation">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">amaranth.lib.meta.</span></span><span class="sig-name descname"><span class="pre">Annotation</span></span><a class="headerlink" href="#amaranth.lib.meta.Annotation" title="Permalink to this definition"></a></dt>
 <dd><p>Interface annotation.</p>
-<p>A container for metadata that can be retrieved from an interface object using
+<p>Annotations are containers for metadata that can be retrieved from an interface object using
 the <a class="reference internal" href="wiring.html#amaranth.lib.wiring.Signature.annotations" title="amaranth.lib.wiring.Signature.annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Signature.annotations</span></code></a> method.</p>
-<p>Annotation instances can be exported as JSON objects, whose structure is defined using
-the <a class="reference external" href="https://json-schema.org">JSON Schema</a> language.</p>
+<p>Annotations have a JSON representation whose structure is defined by the <a class="reference external" href="https://json-schema.org">JSON Schema</a>
+language.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="amaranth.lib.meta.Annotation.__init_subclass__">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__init_subclass__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amaranth.lib.meta.Annotation.__init_subclass__" title="Permalink to this definition"></a></dt>
@@ -375,7 +375,7 @@ the <a class="reference external" href="https://json-schema.org">JSON Schema</a>
 <dt class="sig sig-object py" id="amaranth.lib.meta.Annotation.schema">
 <span class="sig-name descname"><span class="pre">schema</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">{</span> <span class="pre">&quot;$id&quot;:</span> <span class="pre">&quot;...&quot;,</span> <span class="pre">...</span> <span class="pre">}</span></em><a class="headerlink" href="#amaranth.lib.meta.Annotation.schema" title="Permalink to this definition"></a></dt>
 <dd><p>Schema of this annotation, expressed in the <a class="reference external" href="https://json-schema.org">JSON Schema</a> language.</p>
-<p>Subclasses of <a class="reference internal" href="#amaranth.lib.meta.Annotation" title="amaranth.lib.meta.Annotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annotation</span></code></a> must implement this class attribute.</p>
+<p>Subclasses of <a class="reference internal" href="#amaranth.lib.meta.Annotation" title="amaranth.lib.meta.Annotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annotation</span></code></a> must define this class attribute.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
@@ -386,7 +386,7 @@ the <a class="reference external" href="https://json-schema.org">JSON Schema</a>
 <dl class="py property">
 <dt class="sig sig-object py" id="amaranth.lib.meta.Annotation.origin">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">origin</span></span><a class="headerlink" href="#amaranth.lib.meta.Annotation.origin" title="Permalink to this definition"></a></dt>
-<dd><p>The Python object described by this <a class="reference internal" href="#amaranth.lib.meta.Annotation" title="amaranth.lib.meta.Annotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annotation</span></code></a> instance.</p>
+<dd><p>Python object described by this <a class="reference internal" href="#amaranth.lib.meta.Annotation" title="amaranth.lib.meta.Annotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annotation</span></code></a> instance.</p>
 <p>Subclasses of <a class="reference internal" href="#amaranth.lib.meta.Annotation" title="amaranth.lib.meta.Annotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annotation</span></code></a> must implement this property.</p>
 </dd></dl>
 
@@ -394,8 +394,8 @@ the <a class="reference external" href="https://json-schema.org">JSON Schema</a>
 <dt class="sig sig-object py" id="amaranth.lib.meta.Annotation.as_json">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amaranth.lib.meta.Annotation.as_json" title="Permalink to this definition"></a></dt>
 <dd><p>Convert to a JSON representation.</p>
-<p>Subclasses of <a class="reference internal" href="#amaranth.lib.meta.Annotation" title="amaranth.lib.meta.Annotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annotation</span></code></a> must implement this property.</p>
-<p>The JSON representation returned by this method must adhere to <a class="reference internal" href="#amaranth.lib.meta.Annotation.schema" title="amaranth.lib.meta.Annotation.schema"><code class="xref py py-data docutils literal notranslate"><span class="pre">schema</span></code></a> and pass
+<p>Subclasses of <a class="reference internal" href="#amaranth.lib.meta.Annotation" title="amaranth.lib.meta.Annotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annotation</span></code></a> must implement this method.</p>
+<p>JSON representation returned by this method must adhere to <a class="reference internal" href="#amaranth.lib.meta.Annotation.schema" title="amaranth.lib.meta.Annotation.schema"><code class="xref py py-data docutils literal notranslate"><span class="pre">schema</span></code></a> and pass
 validation by <a class="reference internal" href="#amaranth.lib.meta.Annotation.validate" title="amaranth.lib.meta.Annotation.validate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">validate()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -414,7 +414,7 @@ validation by <a class="reference internal" href="#amaranth.lib.meta.Annotation.
 <dd><p>Validate a JSON representation against <a class="reference internal" href="#amaranth.lib.meta.Annotation.schema" title="amaranth.lib.meta.Annotation.schema"><code class="xref py py-attr docutils literal notranslate"><span class="pre">schema</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>instance</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>) – The JSON representation to validate, either previously returned by <a class="reference internal" href="#amaranth.lib.meta.Annotation.as_json" title="amaranth.lib.meta.Annotation.as_json"><code class="xref py py-meth docutils literal notranslate"><span class="pre">as_json()</span></code></a>
+<dd class="field-odd"><p><strong>instance</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>) – JSON representation to validate, either previously returned by <a class="reference internal" href="#amaranth.lib.meta.Annotation.as_json" title="amaranth.lib.meta.Annotation.as_json"><code class="xref py py-meth docutils literal notranslate"><span class="pre">as_json()</span></code></a>
 or retrieved from an external source.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
