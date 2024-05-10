@@ -133,7 +133,7 @@
 <p>While it can be easily converted to Verilog, external tools will find the interface of the resulting module opaque unless they parse its Verilog source (a difficult and unrewarding task), or are provided with a description of it. Components can describe their signature with JSON-based metadata:</p>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">adder</span> <span class="o">=</span> <span class="n">Adder</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">adder</span><span class="o">.</span><span class="n">metadata</span> 
-<span class="go">&lt;amaranth.lib.wiring.ComponentMetadata for &lt;Adder object at ...&gt;&gt;</span>
+<span class="go">&lt;amaranth.lib.wiring.ComponentMetadata for ...Adder object at ...&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">adder</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">as_json</span><span class="p">()</span> 
 <span class="go">{</span>
 <span class="go">    &#39;interface&#39;: {</span>

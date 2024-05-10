@@ -46,7 +46,7 @@ While it can be easily converted to Verilog, external tools will find the interf
 
     >>> adder = Adder()
     >>> adder.metadata # doctest: +ELLIPSIS
-    <amaranth.lib.wiring.ComponentMetadata for <Adder object at ...>>
+    <amaranth.lib.wiring.ComponentMetadata for ...Adder object at ...>
     >>> adder.metadata.as_json() # doctest: +SKIP
     {
         'interface': {
